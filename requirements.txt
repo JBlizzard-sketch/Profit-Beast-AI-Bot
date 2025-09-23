@@ -6,5 +6,9 @@ pandas==2.2.2
 pytest==7.4.0
 requests==2.31.0
 protobuf==4.23.4
-\nfastapi==0.95.2\nuvicorn==0.22.0\nredis==4.5.5\nrq==1.10.0\nstripe==6.86.0\n
+fastapi==0.95.2
+uvicorn==0.22.0
+redis==4.5.5
+rq==1.10.0
+stripe==6.86.0
 xgboost==1.7.6
