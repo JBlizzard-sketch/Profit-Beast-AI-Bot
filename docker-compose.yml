@@ -1,0 +1,45 @@
+version: '3.8'
+services:
+  alttrade:
+    build: .
+    volumes:
+      - .:/app
+      - ./data:/mnt/data
+    environment:
+      - ENV_MODE=${ENV_MODE:-sandbox}
+      - TELEGRAM_POLLING=${TELEGRAM_POLLING:-true}
+    ports:
+      - "8080:8080"
+    command: ["python", "src/app_main.py"]
+  web:
+    build: .
+    volumes:
+      - .:/app
+    environment:
+      - ENV_MODE=${ENV_MODE:-sandbox}
+      - ADMIN_API_KEY=${ADMIN_API_KEY:-}
+    ports:
+      - "8000:8000"
+    command: ["uvicorn", "src.web.admin_api:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+  worker:
+    build: .
+    volumes:
+      - .:/app
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+    command: ["python", "src/agents/worker.py"]
+\n# To scrape metrics, configure Prometheus to scrape http://<web-host>:8000/metrics\n
+
+cron:
+  image: alpine:3.18
+  container_name: alttrade_cron
+  volumes:
+    - .:/app
+  working_dir: /app
+  command: ["/bin/sh", "-c", "crond -f -l 8"]
+  # Install crontab and run crond; replace crontab at container start
+  entrypoint: ["/bin/sh","-c","apk add --no-cache busybox-suid >/dev/null 2>&1 || true; cp /app/scripts/alttrade_crontab /etc/crontabs/root; chmod 644 /etc/crontabs/root; exec crond -f -l 8"]

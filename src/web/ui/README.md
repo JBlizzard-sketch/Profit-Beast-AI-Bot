@@ -1,0 +1,1 @@
+React Admin UI for AltTrade. Run `npm install` and `npm run build` in src/web/ui to build the static files.
