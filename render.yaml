@@ -2,7 +2,7 @@ services:
   - type: web
     name: profit-beast-bot
     env: python
-    pythonVersion: 3.11.10  # Use a specific patch version for precision
+    pythonVersion: 3.12.11  # Use a specific patch version for precision
     buildCommand: |
       python -m pip install --upgrade pip setuptools wheel
       pip install -r requirements.txt
