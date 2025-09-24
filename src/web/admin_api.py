@@ -136,7 +136,7 @@ def admin_list_strategies(admin: int = Depends(get_admin_from_header)):
 def admin_list_agents(admin: int = Depends(get_admin_from_header)):
     # list running agents from AGENTS dict if available
     try:
-        from ..agents.manager import AGENTS
+        from agents.manager import AGENTS
         agents = [{'id': k, 'status': 'running'} for k in AGENTS.keys()]
     except Exception:
         agents = []
