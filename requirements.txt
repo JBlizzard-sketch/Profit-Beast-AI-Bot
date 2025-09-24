@@ -11,4 +11,4 @@ fastapi==0.95.2
 uvicorn==0.22.0
 redis==4.5.5
 rq==1.10.0
-stripe==6.86.0
+stripe==12.5.1  # Fixed: Use a valid version (latest stable as of Sep 2025)
