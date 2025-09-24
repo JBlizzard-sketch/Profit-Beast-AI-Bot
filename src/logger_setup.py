@@ -1,5 +1,5 @@
 import logging, sys, json
-from .config import LOG_JSON, LOG_LEVEL
+from config import LOG_JSON, LOG_LEVEL
 
 def get_logger(name=__name__):
     level = getattr(logging, LOG_LEVEL.upper(), logging.INFO)

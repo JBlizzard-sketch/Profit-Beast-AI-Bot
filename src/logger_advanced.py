@@ -1,7 +1,7 @@
 import logging
-from .config import LOG_JSON, LOG_LEVEL
+from config import LOG_JSON, LOG_LEVEL
 import json
-from .storage.db import init_db
+from storage.db import init_db
 from datetime import datetime
 
 _logger = None

@@ -1,18 +1,18 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ConversationHandler, MessageHandler, filters, ContextTypes
-from .config import TELEGRAM_TOKEN, ADMIN_TELEGRAM_IDS, TELEGRAM_POLLING, TRIAL_DAYS, ENV_MODE
-from .logger_setup import get_logger
-from .storage.db import init_db
-from .trading.ccxt_adapter import get_exchange
-from .ml.rug_detector import predict as rug_predict
-from .ml.whale_detector import predict as whale_predict
-from .ml.sentiment_fusion import compute_sentiment_scores
-from .llm.groq_client import explain_signal
-from .gamification.gamify import get_leaderboard, add_points, award_badge
-from .marketplace.market import list_items, submit_item
-from .payments.providers import StripeProvider
-from .strategy.editor import list_strategies, save_strategy, simulate_strategy
-from .agents.manager import start_agent, stop_agent
+from config import TELEGRAM_TOKEN, ADMIN_TELEGRAM_IDS, TELEGRAM_POLLING, TRIAL_DAYS, ENV_MODE
+from logger_setup import get_logger
+from storage.db import init_db
+from trading.ccxt_adapter import get_exchange
+from ml.rug_detector import predict as rug_predict
+from ml.whale_detector import predict as whale_predict
+from ml.sentiment_fusion import compute_sentiment_scores
+from llm.groq_client import explain_signal
+from gamification.gamify import get_leaderboard, add_points, award_badge
+from marketplace.market import list_items, submit_item
+from payments.providers import StripeProvider
+from strategy.editor import list_strategies, save_strategy, simulate_strategy
+from agents.manager import start_agent, stop_agent
 import datetime
 import json
 
@@ -190,7 +190,7 @@ def run_bot():
     app.add_handler(CommandHandler('help', help_command))
     app.add_handler(CommandHandler('health', health_command))
     # Admin commands (registered in telegram_admin module too)
-    from .telegram_admin import cmd_view_users, cmd_start_agent, cmd_stop_agent
+    from telegram_admin import cmd_view_users, cmd_start_agent, cmd_stop_agent
     app.add_handler(CommandHandler('admin_users', cmd_view_users))
     app.add_handler(CommandHandler('start_agent', cmd_start_agent))
     app.add_handler(CommandHandler('stop_agent', cmd_stop_agent))
