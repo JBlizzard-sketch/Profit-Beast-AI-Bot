@@ -1,6 +1,6 @@
 """Strategy editor: store JSON strategies, allow edit, list, and simple simulation."""
 import json
-from ..storage.db import init_db
+from storage.db import init_db
 from logger_setup import get_logger
 from datetime import datetime
 

@@ -6,18 +6,18 @@ from fastapi import FastAPI, Request, HTTPException, Depends
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 from fastapi.responses import JSONResponse
-from ..storage.db import init_db
+from storage.db import init_db
 from config import ADMIN_TELEGRAM_IDS
-from logger_setup import get_logger\nfrom ..auth.jwt_auth import verify_admin_token, is_admin_telegram_id\nfrom metrics import metrics_response, TRADE_COUNTER, ALERT_COUNTER, MODEL_RETRAIN_COUNTER
+from logger_setup import get_logger\nfrom auth.jwt_auth import verify_admin_token, is_admin_telegram_id\nfrom metrics import metrics_response, TRADE_COUNTER, ALERT_COUNTER, MODEL_RETRAIN_COUNTER
 from logger_advanced import audit_event
-from ..marketplace.market import list_items, approve_item
-from ..agents.manager import start_agent, stop_agent, AGENTS
+from marketplace.market import list_items, approve_item
+from agents.manager import start_agent, stop_agent, AGENTS
 
 log = get_logger(__name__)
 app = FastAPI()
 
 from fastapi import Header, Depends
-from ..auth.jwt_auth import verify_admin_token, is_admin_telegram_id
+from auth.jwt_auth import verify_admin_token, is_admin_telegram_id
 def get_admin_from_header(authorization: str = Header(None), api_key: str = Header(None)):
     # Prefer JWT Bearer token
     if authorization and authorization.startswith('Bearer '):
@@ -45,7 +45,7 @@ def admin_login(payload: dict = None, x_api_key: str = Header(None)):
     if provided != ADMIN_API_KEY:
         raise HTTPException(status_code=403, detail='Invalid API key')
     # create a JWT token for admin usage
-    from ..auth.jwt_auth import create_admin_token
+    from auth.jwt_auth import create_admin_token
     # use first admin id if present
     admin_id = ADMIN_TELEGRAM_IDS[0] if ADMIN_TELEGRAM_IDS else 0
     token = create_admin_token(admin_id, expires_minutes=24*60)
@@ -172,7 +172,7 @@ def admin_payments(limit: int = 50, admin: int = Depends(get_admin_from_header))
 
 @app.post('/admin/retrain')
 def admin_retrain(admin: int = Depends(get_admin_from_header)):
-    from ..ml.pipeline import retrain_all
+    from ml.pipeline import retrain_all
     meta = retrain_all()
     return {'status':'retrained','meta': meta}
 

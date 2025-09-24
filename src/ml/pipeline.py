@@ -2,7 +2,9 @@
 import os
 from pathlib import Path
 from logger_setup import get_logger
-from . import rug_detector, whale_detector, sentiment_fusion
+from ml.rug_detector import predict as rug_predict
+from ml.whale_detector import predict as whale_predict
+from ml.sentiment_fusion import compute_sentiment_scores
 from joblib import dump
 import json
 import datetime

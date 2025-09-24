@@ -1,7 +1,7 @@
 """Payment providers: sandbox implementations for Stripe, Daraja(M-Pesa), Binance Pay, TON."""
-from ..payments.payment_stub import PaymentStub
+from payments.payment_stub import PaymentStub
 from logger_setup import get_logger
-from ..storage.db import init_db
+from storage.db import init_db
 
 log = get_logger(__name__)
 conn = init_db()
