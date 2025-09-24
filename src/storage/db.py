@@ -1,7 +1,7 @@
 import sqlite3
 from pathlib import Path
 from config import DB_PATH
-from ..logger_setup import get_logger
+from logger_setup import get_logger
 
 log = get_logger(__name__)
 
