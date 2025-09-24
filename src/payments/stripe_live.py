@@ -2,7 +2,7 @@
 Provides create_payment_intent and webhook verification functions.
 """
 import os
-from ..logger_setup import get_logger
+from logger_setup import get_logger
 log = get_logger(__name__)
 
 try:

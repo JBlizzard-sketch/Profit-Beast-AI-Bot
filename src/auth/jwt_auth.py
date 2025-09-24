@@ -1,8 +1,8 @@
 import os
 import jwt
 import datetime
-from ..logger_setup import get_logger
-from ..config import ADMIN_TELEGRAM_IDS
+from logger_setup import get_logger
+from config import ADMIN_TELEGRAM_IDS
 
 log = get_logger(__name__)
 SECRET = os.getenv('ADMIN_JWT_SECRET', os.getenv('ADMIN_API_KEY','supersecret'))

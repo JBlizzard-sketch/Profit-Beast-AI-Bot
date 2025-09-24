@@ -1,9 +1,9 @@
 """Agents manager: run/stop simple autonomous agents (simulated)."""
 import threading, time, uuid
-from ..logger_setup import get_logger
+from logger_setup import get_logger
 from ..trading.ccxt_adapter import get_exchange
 from ..storage.db import init_db
-from ..logger_advanced import audit_event
+from logger_advanced import audit_event
 
 log = get_logger(__name__)
 conn = init_db()

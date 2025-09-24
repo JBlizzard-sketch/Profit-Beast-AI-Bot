@@ -2,8 +2,8 @@
 If GROQ_API_KEY is not present, falls back to deterministic template. Also supports OPENAI as fallback.
 """ 
 import os, requests, json
-from ..config import GROQ_API_KEY, OPENAI_API_KEY
-from ..logger_setup import get_logger
+from config import GROQ_API_KEY, OPENAI_API_KEY
+from logger_setup import get_logger
 log = get_logger(__name__)
 
 GROQ_API_URL = os.getenv('GROQ_API_URL', 'https://api.groq.ai/v1')  # placeholder

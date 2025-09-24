@@ -1,7 +1,7 @@
 """Payments: sandbox stubs for Stripe, M-Pesa, Binance Pay, and Telegram TON wallet.
 Real implementations require API keys and webhook endpoints."""
-from ..logger_setup import get_logger
-from ..config import ENV_MODE
+from logger_setup import get_logger
+from config import ENV_MODE
 log = get_logger(__name__)
 
 class PaymentStub:

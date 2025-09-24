@@ -1,7 +1,7 @@
 """ML pipeline orchestrator: version models, trigger retrains, evaluate and save artifacts.""" 
 import os
 from pathlib import Path
-from ..logger_setup import get_logger
+from logger_setup import get_logger
 from . import rug_detector, whale_detector, sentiment_fusion
 from joblib import dump
 import json

@@ -2,7 +2,7 @@
 import numpy as np
 from joblib import dump, load
 from pathlib import Path
-from ..logger_setup import get_logger
+from logger_setup import get_logger
 MODEL_PATH = Path(__file__).parent.parent.parent / 'models' / 'sentiment_dummy.joblib'
 MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
 log = get_logger(__name__)

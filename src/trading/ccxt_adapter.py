@@ -1,7 +1,7 @@
 """CCXT adapter with sandbox mock and live stub."""
 import time, random
-from ..config import ENV_MODE, LIVE_MODE, CCXT_EXCHANGE
-from ..logger_setup import get_logger
+from config import ENV_MODE, LIVE_MODE, CCXT_EXCHANGE
+from logger_setup import get_logger
 
 log = get_logger(__name__)
 

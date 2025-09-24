@@ -5,7 +5,7 @@ import os
 import numpy as np
 from pathlib import Path
 from joblib import dump, load
-from ..logger_setup import get_logger
+from logger_setup import get_logger
 
 log = get_logger(__name__)
 MODEL_PATH = Path(__file__).parent.parent.parent / 'models' / 'rug_model.joblib'

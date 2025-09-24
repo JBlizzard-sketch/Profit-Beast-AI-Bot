@@ -2,8 +2,8 @@
 import os, time
 from rq import Queue
 from redis import Redis
-from .manager import SimpleArbitrageAgent
-from ..logger_setup import get_logger
+from manager import SimpleArbitrageAgent
+from logger_setup import get_logger
 
 log = get_logger(__name__)
 redis_url = os.getenv('REDIS_URL', 'redis://redis:6379/0')

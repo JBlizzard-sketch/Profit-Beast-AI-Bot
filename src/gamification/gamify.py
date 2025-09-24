@@ -1,6 +1,6 @@
 """Gamification: leaderboards, badges, points, vault contributions."""
 from ..storage.db import init_db
-from ..logger_setup import get_logger
+from logger_setup import get_logger
 from datetime import datetime
 
 log = get_logger(__name__)

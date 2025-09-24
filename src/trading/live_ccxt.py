@@ -2,8 +2,8 @@
 Provides fetch_balance and create_order with safety checks (only if LIVE_MODE==True).
 """
 import os, ccxt, logging
-from ..config import LIVE_MODE, CCXT_EXCHANGE
-from ..logger_setup import get_logger
+from config import LIVE_MODE, CCXT_EXCHANGE
+from logger_setup import get_logger
 
 log = get_logger(__name__)
 

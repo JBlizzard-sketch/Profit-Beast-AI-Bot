@@ -2,7 +2,7 @@
 This module provides token retrieval and STK push initiation placeholders.
 """ 
 import os, requests
-from ..logger_setup import get_logger
+from logger_setup import get_logger
 log = get_logger(__name__)
 
 BASE_URL = os.getenv('MPESA_BASE_URL','https://sandbox.safaricom.co.ke')
